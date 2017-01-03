@@ -30,15 +30,15 @@ export default class MyTable extends React.Component {
     })
   }
 
-  _getFilteredValue(field, el) {
+  _getFilteredValue(field, el, row) {
     let {filters} = this.props;
-    return (filters && filters[field]) ? filters[field](el) : el;
+    return (filters && filters[field]) ? filters[field]((el) ? el : row) : el;
   }
 
   _getValueFromField(field, value) {
     let array = field.split(".");
     if (array.length == 1) {
-      return this._getFilteredValue(field, value[array[0]]);
+      return this._getFilteredValue(field, value[array[0]], row);
     }
     else {
       let val = value[array[0]];
