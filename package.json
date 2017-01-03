@@ -1,8 +1,8 @@
 {
   "name": "box4b-react-table",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Table Component for box4b React Front Apps",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "./node_modules/babel-cli/bin/babel.js src --out-file build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
