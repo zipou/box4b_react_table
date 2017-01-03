@@ -1,0 +1,41 @@
+{
+  "name": "box4b-react-table",
+  "version": "0.0.1",
+  "description": "Table Component for box4b React Front Apps",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/babel-cli/bin/babel.js src --out-file build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zipou/box4b_react_table.git"
+  },
+  "keywords": [
+    "box4b",
+    "react",
+    "table"
+  ],
+  "author": "Romain Fenninger <romain@fenninger.fr>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/zipou/box4b_react_table/issues"
+  },
+  "homepage": "https://github.com/zipou/box4b_react_table#readme",
+  "dependencies": {
+    "react": ">15.0.0",
+    "react-dom": ">15.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-import-extension-jsx-to-js": "^0.1.0",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "eslint": "^2.9.0",
+    "eslint-plugin-react": "^5.1.1"
+  }
+}
