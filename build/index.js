@@ -46,17 +46,17 @@ var MyTable = function (_React$Component) {
     }
   }, {
     key: "_getFilteredValue",
-    value: function _getFilteredValue(field, el) {
+    value: function _getFilteredValue(field, el, row) {
       var filters = this.props.filters;
 
-      return filters && filters[field] ? filters[field](el) : el;
+      return filters && filters[field] ? filters[field](el ? el : row) : el;
     }
   }, {
     key: "_getValueFromField",
     value: function _getValueFromField(field, value) {
       var array = field.split(".");
       if (array.length == 1) {
-        return this._getFilteredValue(field, value[array[0]]);
+        return this._getFilteredValue(field, value[array[0]], row);
       } else {
         var val = value[array[0]];
         array.shift();

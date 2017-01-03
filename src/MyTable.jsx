@@ -38,7 +38,7 @@ export default class MyTable extends React.Component {
   _getValueFromField(field, value) {
     let array = field.split(".");
     if (array.length == 1) {
-      return this._getFilteredValue(field, value[array[0]], row);
+      return this._getFilteredValue(field, value[array[0]], value);
     }
     else {
       let val = value[array[0]];
