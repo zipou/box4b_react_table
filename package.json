@@ -1,6 +1,6 @@
 {
   "name": "box4b-react-table",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Table Component for box4b React Front Apps",
   "main": "build/index.js",
   "scripts": {

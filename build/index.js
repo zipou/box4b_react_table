@@ -143,7 +143,7 @@ var MyTable = function (_React$Component) {
               { style: { borderColor: "#d9edf7", backgroundColor: "#c4e3f3", color: "#31708f" } },
               multiSelect && _react2.default.createElement("td", null),
               fields.map(function (field, index) {
-                var classe = colClasses && colClasses["field"] ? colClasses["field"] : "";
+                var classe = colClasses && colClasses[field] ? colClasses[field] : "";
                 return _react2.default.createElement(
                   "td",
                   { style: { cursor: "pointer" }, className: classe, key: index + field, onClick: _this2._handleSorting.bind(_this2, field) },

@@ -90,7 +90,7 @@ export default class MyTable extends React.Component {
     return (
       <Col>
         {panelTitle && <h2 style={{textAlign: "left"}}>{panelTitle}</h2>}
-          {(list && list.length > 0) && <Table striped bordered hover>
+          {(list && list.length > 0) && <Table striped bordered hover responsive>
             <thead>
               <tr style={{borderColor: "#d9edf7", backgroundColor: "#c4e3f3", color : "#31708f"}}>
                 {multiSelect && <td></td>}
@@ -108,7 +108,8 @@ export default class MyTable extends React.Component {
                     <tr key={"row"+rowIndex}>
                       {multiSelect && <td key={rowIndex + "_select"}><input type="checkbox" onChange={this._handleSelect.bind(this, row)}></input></td>}
                       {fields.map((field, index)=>{
-                        return <td style={{cursor: "pointer"}} key={rowIndex + "_" + index}  onClick={(onRowClick) ? onRowClick.bind(this, list[rowIndex]) : null}>{this._getValueFromField(field, row)}</td>
+                        let classe = (colClasses && colClasses[field]) ? colClasses[field] : "";
+                        return <td className={classe} style={{cursor: "pointer"}} key={rowIndex + "_" + index}  onClick={(onRowClick) ? onRowClick.bind(this, list[rowIndex]) : null}>{this._getValueFromField(field, row)}</td>
                       })}
                     </tr>
                   )
