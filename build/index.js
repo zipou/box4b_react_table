@@ -120,7 +120,8 @@ var MyTable = function (_React$Component) {
           onRowClick = _props.onRowClick,
           panelTitle = _props.panelTitle,
           multiSelect = _props.multiSelect,
-          emptyLabel = _props.emptyLabel;
+          emptyLabel = _props.emptyLabel,
+          colClasses = _props.colClasses;
       var list = this.state.list;
 
       return _react2.default.createElement(
@@ -142,9 +143,10 @@ var MyTable = function (_React$Component) {
               { style: { borderColor: "#d9edf7", backgroundColor: "#c4e3f3", color: "#31708f" } },
               multiSelect && _react2.default.createElement("td", null),
               fields.map(function (field, index) {
+                var classe = colClasses && colClasses["field"] ? colClasses["field"] : "";
                 return _react2.default.createElement(
                   "td",
-                  { style: { cursor: "pointer" }, key: index + field, onClick: _this2._handleSorting.bind(_this2, field) },
+                  { style: { cursor: "pointer" }, className: classe, key: index + field, onClick: _this2._handleSorting.bind(_this2, field) },
                   _react2.default.createElement(
                     "span",
                     { style: { fontSize: 16 } },

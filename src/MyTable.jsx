@@ -95,7 +95,7 @@ export default class MyTable extends React.Component {
               <tr style={{borderColor: "#d9edf7", backgroundColor: "#c4e3f3", color : "#31708f"}}>
                 {multiSelect && <td></td>}
                 {fields.map((field, index)=>{
-                  let classe = (colClasses && colClasses["field"]) ? colClasses["field"] : "";
+                  let classe = (colClasses && colClasses[field]) ? colClasses[field] : "";
                   return <td style={{cursor: "pointer"}} className={classe} key={index+field} onClick={this._handleSorting.bind(this, field)}>
                       <span style={{fontSize:16}}>{(labels && labels[field]) ? labels[field] : ((labelPrefix) ? labelPrefix : "") + field}</span>
                     </td>
