@@ -17,15 +17,16 @@
     "react",
     "table"
   ],
-  "author": "Romain Fenninger <romain@fenninger.fr>",
-  "license": "UNLICENSED",
+  "author": "Romain Fenninger <romain@box4b.fr>",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/zipou/box4b_react_table/issues"
   },
   "homepage": "https://github.com/zipou/box4b_react_table#readme",
   "dependencies": {
     "react": ">15.0.0",
-    "react-dom": ">15.0.0"
+    "react-dom": ">15.0.0",
+    "react-bootstrap": ">0.28.2"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",

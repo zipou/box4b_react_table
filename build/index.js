@@ -56,7 +56,7 @@ var MyTable = function (_React$Component) {
     value: function _getValueFromField(field, value) {
       var array = field.split(".");
       if (array.length == 1) {
-        return this._getFilteredValue(field, value[array[0]], row);
+        return this._getFilteredValue(field, value[array[0]], value);
       } else {
         var val = value[array[0]];
         array.shift();
