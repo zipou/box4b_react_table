@@ -84,7 +84,7 @@ var MyTable = function (_React$Component) {
       return list.sort(function (el1, el2) {
         var cField = sortField.split(".");
         if (cField.length === 1) {
-          var val = el1[field] > el2[sortField] ? -1 : 1;
+          var val = el1[sortField] > el2[sortField] ? -1 : 1;
           return sortDir === "DESC" ? val : -1 * val;
         } else {
           var one = sortField.split('.').reduce(function (a, b) {

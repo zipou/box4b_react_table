@@ -62,7 +62,7 @@ export default class MyTable extends React.Component {
     return list.sort((el1, el2) => {
       let cField = sortField.split(".");
       if (cField.length === 1) {
-        let val =  (el1[field] > el2[sortField]) ?  -1 : 1;
+        let val =  (el1[sortField] > el2[sortField]) ?  -1 : 1;
         return (sortDir === "DESC") ? val : -1*val;
       } else {
         let one = sortField.split('.').reduce((a, b) => a[b], el1);
