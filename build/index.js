@@ -64,29 +64,38 @@ var MyTable = function (_React$Component) {
       }
     }
   }, {
+    key: "_updateSortField",
+    value: function _updateSortField(field) {
+      var sortDir = this.state.sortDir;
+
+      this.setState({
+        sortField: field,
+        sortDir: sortDir ? sortDir === "ASC" ? "DESC" : "ASC" : "ASC"
+      });
+    }
+  }, {
     key: "_handleSorting",
-    value: function _handleSorting(field) {
-      var sortDir = this.state.sortDir ? this.state.sortDir === "ASC" ? "DESC" : "ASC" : "ASC";
-      var list = this.state.list.sort(function (el1, el2) {
-        var cField = field.split(".");
+    value: function _handleSorting() {
+      var _state = this.state,
+          sortField = _state.sortField,
+          list = _state.list;
+
+      if (!sortField) return list;
+      return list.sort(function (el1, el2) {
+        var cField = sortField.split(".");
         if (cField.length === 1) {
-          var val = el1[field] > el2[field] ? -1 : 1;
+          var val = el1[field] > el2[sortField] ? -1 : 1;
           return sortDir === "DESC" ? val : -1 * val;
         } else {
-          var one = field.split('.').reduce(function (a, b) {
+          var one = sortField.split('.').reduce(function (a, b) {
             return a[b];
           }, el1);
-          var two = field.split('.').reduce(function (a, b) {
+          var two = sortField.split('.').reduce(function (a, b) {
             return a[b];
           }, el2);
           var _val = one > two ? -1 : 1;
           return sortDir === "DESC" ? _val : -1 * _val;
         }
-      });
-      this.setState({
-        sortField: field,
-        sortDir: sortDir,
-        list: list
       });
     }
   }, {
@@ -124,6 +133,7 @@ var MyTable = function (_React$Component) {
           colClasses = _props.colClasses;
       var list = this.state.list;
 
+      list = this._handleSorting();
       return _react2.default.createElement(
         _reactBootstrap.Col,
         null,
@@ -134,7 +144,7 @@ var MyTable = function (_React$Component) {
         ),
         list && list.length > 0 && _react2.default.createElement(
           _reactBootstrap.Table,
-          { striped: true, bordered: true, hover: true },
+          { striped: true, bordered: true, hover: true, responsive: true },
           _react2.default.createElement(
             "thead",
             null,
@@ -146,7 +156,7 @@ var MyTable = function (_React$Component) {
                 var classe = colClasses && colClasses[field] ? colClasses[field] : "";
                 return _react2.default.createElement(
                   "td",
-                  { style: { cursor: "pointer" }, className: classe, key: index + field, onClick: _this2._handleSorting.bind(_this2, field) },
+                  { style: { cursor: "pointer" }, className: classe, key: index + field, onClick: _this2._updateSortField.bind(_this2, field) },
                   _react2.default.createElement(
                     "span",
                     { style: { fontSize: 16 } },
@@ -169,9 +179,10 @@ var MyTable = function (_React$Component) {
                   _react2.default.createElement("input", { type: "checkbox", onChange: _this2._handleSelect.bind(_this2, row) })
                 ),
                 fields.map(function (field, index) {
+                  var classe = colClasses && colClasses[field] ? colClasses[field] : "";
                   return _react2.default.createElement(
                     "td",
-                    { style: { cursor: "pointer" }, key: rowIndex + "_" + index, onClick: onRowClick ? onRowClick.bind(_this2, list[rowIndex]) : null },
+                    { className: classe, style: { cursor: "pointer" }, key: rowIndex + "_" + index, onClick: onRowClick ? onRowClick.bind(_this2, list[rowIndex]) : null },
                     _this2._getValueFromField(field, row)
                   );
                 })

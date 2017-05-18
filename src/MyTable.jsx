@@ -47,25 +47,30 @@ export default class MyTable extends React.Component {
     }
   }
 
-  _handleSorting(field) {
-    let sortDir = (this.state.sortDir) ? (this.state.sortDir === "ASC") ? "DESC" : "ASC" : "ASC";
-    let list = this.state.list.sort((el1, el2) => {
-      let cField = field.split(".");
+  _updateSortField(field) {
+    let {sortDir} = this.state;
+    this.setState({
+      sortField : field,
+      sortDir : (sortDir) ? (sortDir === "ASC") ? "DESC" : "ASC" : "ASC"
+    })
+    ;
+  }
+
+  _handleSorting() {
+    let {sortField, list} = this.state;
+    if ( ! sortField) return list;
+    return list.sort((el1, el2) => {
+      let cField = sortField.split(".");
       if (cField.length === 1) {
-        let val =  (el1[field] > el2[field]) ?  -1 : 1;
+        let val =  (el1[field] > el2[sortField]) ?  -1 : 1;
         return (sortDir === "DESC") ? val : -1*val;
       } else {
-        let one = field.split('.').reduce((a, b) => a[b], el1);
-        let two = field.split('.').reduce((a, b) => a[b], el2);
+        let one = sortField.split('.').reduce((a, b) => a[b], el1);
+        let two = sortField.split('.').reduce((a, b) => a[b], el2);
         let val =  (one > two) ?  -1 : 1;
         return (sortDir === "DESC") ? val : -1*val;
       }
     })
-    this.setState({
-      sortField: field,
-      sortDir: sortDir,
-      list: list
-    });
   }
 
   _handleSelect(row, event) {
@@ -87,6 +92,7 @@ export default class MyTable extends React.Component {
   render() {
     let {fields, labels, filters, labelPrefix, onRowClick, panelTitle, multiSelect, emptyLabel, colClasses} = this.props;
     let {list} = this.state;
+    list = this._handleSorting()
     return (
       <Col>
         {panelTitle && <h2 style={{textAlign: "left"}}>{panelTitle}</h2>}
@@ -96,7 +102,7 @@ export default class MyTable extends React.Component {
                 {multiSelect && <td></td>}
                 {fields.map((field, index)=>{
                   let classe = (colClasses && colClasses[field]) ? colClasses[field] : "";
-                  return <td style={{cursor: "pointer"}} className={classe} key={index+field} onClick={this._handleSorting.bind(this, field)}>
+                  return <td style={{cursor: "pointer"}} className={classe} key={index+field} onClick={this._updateSortField.bind(this, field)}>
                       <span style={{fontSize:16}}>{(labels && labels[field]) ? labels[field] : ((labelPrefix) ? labelPrefix : "") + field}</span>
                     </td>
                 })}
