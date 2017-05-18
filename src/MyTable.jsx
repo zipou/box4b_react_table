@@ -57,7 +57,7 @@ export default class MyTable extends React.Component {
   }
 
   _handleSorting() {
-    let {sortField, list} = this.state;
+    let {sortField, sortDir, list} = this.state;
     if ( ! sortField) return list;
     return list.sort((el1, el2) => {
       let cField = sortField.split(".");

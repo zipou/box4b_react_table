@@ -78,6 +78,7 @@ var MyTable = function (_React$Component) {
     value: function _handleSorting() {
       var _state = this.state,
           sortField = _state.sortField,
+          sortDir = _state.sortDir,
           list = _state.list;
 
       if (!sortField) return list;
