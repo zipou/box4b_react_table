@@ -144,51 +144,55 @@ var MyTable = function (_React$Component) {
           panelTitle
         ),
         list && list.length > 0 && _react2.default.createElement(
-          _reactBootstrap.Table,
-          { striped: true, bordered: true, hover: true, responsive: true },
+          "div",
+          { className: "table-responsive" },
           _react2.default.createElement(
-            "thead",
-            null,
+            "table",
+            { className: "table table-striped table-bordered table-hover", style: { overflow: "visible" } },
             _react2.default.createElement(
-              "tr",
-              { style: { borderColor: "#d9edf7", backgroundColor: "#c4e3f3", color: "#31708f" } },
-              multiSelect && _react2.default.createElement("td", null),
-              fields.map(function (field, index) {
-                var classe = colClasses && colClasses[field] ? colClasses[field] : "";
-                return _react2.default.createElement(
-                  "td",
-                  { style: { cursor: "pointer" }, className: classe, key: index + field, onClick: _this2._updateSortField.bind(_this2, field) },
-                  _react2.default.createElement(
-                    "span",
-                    { style: { fontSize: 16 } },
-                    labels && labels[field] ? labels[field] : (labelPrefix ? labelPrefix : "") + field
-                  )
-                );
-              })
-            )
-          ),
-          _react2.default.createElement(
-            "tbody",
-            null,
-            list && list.map(function (row, rowIndex) {
-              return _react2.default.createElement(
+              "thead",
+              null,
+              _react2.default.createElement(
                 "tr",
-                { key: "row" + rowIndex },
-                multiSelect && _react2.default.createElement(
-                  "td",
-                  { key: rowIndex + "_select" },
-                  _react2.default.createElement("input", { type: "checkbox", onChange: _this2._handleSelect.bind(_this2, row) })
-                ),
+                { style: { borderColor: "#d9edf7", backgroundColor: "#c4e3f3", color: "#31708f" } },
+                multiSelect && _react2.default.createElement("td", null),
                 fields.map(function (field, index) {
                   var classe = colClasses && colClasses[field] ? colClasses[field] : "";
                   return _react2.default.createElement(
                     "td",
-                    { className: classe, style: { cursor: "pointer" }, key: rowIndex + "_" + index, onClick: onRowClick ? onRowClick.bind(_this2, list[rowIndex]) : null },
-                    _this2._getValueFromField(field, row)
+                    { style: { cursor: "pointer" }, className: classe, key: index + field, onClick: _this2._updateSortField.bind(_this2, field) },
+                    _react2.default.createElement(
+                      "span",
+                      { style: { fontSize: 16 } },
+                      labels && labels[field] ? labels[field] : (labelPrefix ? labelPrefix : "") + field
+                    )
                   );
                 })
-              );
-            })
+              )
+            ),
+            _react2.default.createElement(
+              "tbody",
+              null,
+              list && list.map(function (row, rowIndex) {
+                return _react2.default.createElement(
+                  "tr",
+                  { key: "row" + rowIndex },
+                  multiSelect && _react2.default.createElement(
+                    "td",
+                    { key: rowIndex + "_select" },
+                    _react2.default.createElement("input", { type: "checkbox", onChange: _this2._handleSelect.bind(_this2, row) })
+                  ),
+                  fields.map(function (field, index) {
+                    var classe = colClasses && colClasses[field] ? colClasses[field] : "";
+                    return _react2.default.createElement(
+                      "td",
+                      { className: classe, style: { cursor: "pointer" }, key: rowIndex + "_" + index, onClick: onRowClick ? onRowClick.bind(_this2, list[rowIndex]) : null },
+                      _this2._getValueFromField(field, row)
+                    );
+                  })
+                );
+              })
+            )
           )
         ),
         list && list.length == 0 && _react2.default.createElement(

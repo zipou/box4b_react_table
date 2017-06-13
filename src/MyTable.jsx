@@ -96,7 +96,8 @@ export default class MyTable extends React.Component {
     return (
       <Col>
         {panelTitle && <h2 style={{textAlign: "left"}}>{panelTitle}</h2>}
-          {(list && list.length > 0) && <Table striped bordered hover responsive>
+          {(list && list.length > 0) && <div className="table-responsive">
+            <table className="table table-striped table-bordered table-hover" style={{overflow : "visible"}}>
             <thead>
               <tr style={{borderColor: "#d9edf7", backgroundColor: "#c4e3f3", color : "#31708f"}}>
                 {multiSelect && <td></td>}
@@ -121,7 +122,7 @@ export default class MyTable extends React.Component {
                   )
                 })}
             </tbody>
-          </Table>}
+          </table></div>}
         {(list && list.length == 0) &&  <Alert bsStyle="warning">{emptyLabel}</Alert>}
       </Col>
     )
