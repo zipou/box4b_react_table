@@ -3,16 +3,16 @@ import {Panel, Button, Table, Col, Alert} from "react-bootstrap";
 
 export default class MyTable extends React.Component {
 
-  static propTypes= {
-    list : React.PropTypes.array,
-    fields : React.PropTypes.array,
-    labels : React.PropTypes.object,
-    filters : React.PropTypes.object,
-    onRowClick : React.PropTypes.func,
-    panelTitle : React.PropTypes.string,
-    emptyLabel : React.PropTypes.string,
-    multiSelect : React.PropTypes.bool,
-  }
+  // static propTypes= {
+  //   list : React.PropTypes.array,
+  //   fields : React.PropTypes.array,
+  //   labels : React.PropTypes.object,
+  //   filters : React.PropTypes.object,
+  //   onRowClick : React.PropTypes.func,
+  //   panelTitle : React.PropTypes.string,
+  //   emptyLabel : React.PropTypes.string,
+  //   multiSelect : React.PropTypes.bool,
+  // }
 
   constructor(props) {
     super(props);
